@@ -1,5 +1,5 @@
 import { createBrowserRouter } from "react-router-dom";
-import PlayGround from "../PlayGround";
+import PlayGround from "../widgets/PlayGround";
 
 export const router = createBrowserRouter([
   {
