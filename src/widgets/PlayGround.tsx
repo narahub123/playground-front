@@ -1,4 +1,4 @@
-import { ModeButton } from "@/shared/ui";
+import { ModeButton } from "@/features/theme";
 import { Outlet } from "react-router-dom";
 
 function PlayGround() {
