@@ -5,6 +5,7 @@ export const router = createBrowserRouter([
   {
     path: "/",
     element: <PlayGround />,
+    errorElement: "",
     children: [],
   },
 ]);
