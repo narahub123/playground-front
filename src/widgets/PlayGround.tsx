@@ -1,5 +1,11 @@
+import { Outlet } from "react-router-dom";
+
 function PlayGround() {
-  return <>PlayGround</>;
+  return (
+    <>
+      <Outlet />
+    </>
+  );
 }
 
 export default PlayGround;

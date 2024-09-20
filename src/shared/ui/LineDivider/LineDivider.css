@@ -1,0 +1,12 @@
+.line-divider {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.line-divider-line {
+  flex: 1;
+  border-bottom: 2px solid #ddd;
+}
+.line-divider-text {
+}

@@ -1,0 +1,38 @@
+.auth-button {
+  width: 270px;
+  height: 40px;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  border-radius: 20px;
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+}
+
+.auth-button-img-wrapper {
+  flex: 1;
+  display: flex;
+  justify-content: right;
+}
+
+.auth-button-img {
+  width: 16px;
+  height: 16px;
+}
+
+.auth-button-text-wrapper {
+  flex: 3;
+}
+.auth-button-text-wrapper.solo {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+
+.auth-button-text {
+  font-size: 14px;
+  font-weight: bold;
+}

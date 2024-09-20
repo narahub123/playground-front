@@ -1,0 +1,48 @@
+.auth {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  max-height: 600px;
+}
+
+.auth-container {
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+}
+
+.auth-signup {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.auth-login {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.auth-section-title {
+  font-weight: bold;
+  font-size: 20px;
+  text-align: center;
+}
+
+.auth-signup-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.divider {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.divider-line {
+  width: 100%;
+  border-bottom: 2px solid #ccc;
+  flex: 1;
+}
