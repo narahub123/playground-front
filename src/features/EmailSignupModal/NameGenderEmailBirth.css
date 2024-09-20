@@ -1,0 +1,21 @@
+.email-signup-modal-main {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.email-signup-modal-header {
+}
+
+.email-signup-modal-header-title {
+  font-weight: bold;
+  font-size: 25px;
+}
+.email-signup-modal-content {
+  flex: 1;
+  border: 1px solid #ccc;
+}
+.email-signup-modal-footer {
+}

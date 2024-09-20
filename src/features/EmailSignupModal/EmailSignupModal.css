@@ -17,5 +17,12 @@
   height: 600px;
   background-color: var(--background);
   border-radius: 20px;
-  padding: 70px;
+  padding: 50px;
+}
+
+.email-signup-modal-close {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  cursor: pointer;
 }

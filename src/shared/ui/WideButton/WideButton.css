@@ -1,0 +1,28 @@
+.wide-button {
+  width: 100%;
+  box-sizing: border-box;
+  border: none;
+  border-radius: 20px;
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+}
+
+.wide-button.valid {
+  background-color: var(--key-color);
+  color: #fff;
+}
+
+.wide-button-spinner {
+  font-size: 18px;
+  animation: spinner 1s linear infinite;
+}
+
+@keyframes spinner {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
