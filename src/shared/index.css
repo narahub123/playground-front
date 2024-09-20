@@ -9,11 +9,13 @@
 :root[color-theme="light"] {
   --background: #fff;
   --text: #000;
+  --backdrop: rgba(0, 0, 0, 0.6);
 }
 
 :root[color-theme="dark"] {
   --background: #000;
   --text: #fff;
+  --backdrop: rgba(100, 148, 237, 0.3);
 }
 
 body {

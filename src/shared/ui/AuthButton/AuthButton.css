@@ -12,6 +12,11 @@
   cursor: pointer;
 }
 
+.auth-button:hover {
+  background-color: #eeeeee4c;
+  transition: background-color 0.1s ease-in-out;
+}
+
 .auth-button-img-wrapper {
   flex: 1;
   display: flex;
