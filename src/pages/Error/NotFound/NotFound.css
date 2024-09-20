@@ -1,0 +1,45 @@
+.not-found {
+  position: relative;
+  height: 100%;
+}
+.not-found-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 57%;
+  max-width: 600px;
+  max-height: 500px;
+}
+
+.not-found-title {
+  font-size: 50px;
+  font-weight: bold;
+  text-align: center;
+}
+
+.not-found-text-container {
+  margin-top: 100px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.not-found-btn-container {
+  margin-top: 100px;
+  text-align: center;
+}
+
+.not-found-btn {
+  box-sizing: border-box;
+  border: none;
+  border-radius: 10px;
+  padding: 10px 20px;
+  background-color: #000;
+  color: #fff;
+  cursor: pointer;
+}
+
+.not-found-btn:hover {
+  background-color: rgba(0, 0, 0, 0.8);
+}
