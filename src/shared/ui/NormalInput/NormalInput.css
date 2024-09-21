@@ -1,0 +1,64 @@
+.normal-input {
+  box-sizing: border-box;
+  border-radius: 10px;
+  height: 60px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 7px;
+
+  /* 변동 */
+  border: 1px solid #ccc;
+
+  transition: all 0.3s ease-in-out;
+}
+.normal-input.focused {
+  border: 2px solid var(--key-color);
+  gap: 5px;
+  transition: all 0.3s ease-in-out;
+}
+
+.normal-input-info {
+  flex: 1;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.normal-input-info.focused {
+}
+
+.normal-input-info-title {
+  font-size: 20px;
+  transition: all 0.3s ease-in-out;
+}
+
+.normal-input-info-title.focused {
+  font-size: 12px;
+  transition: all 0.3s ease-in-out;
+}
+
+.normal-input-info-count {
+  font-size: 12px;
+  height: 12px;
+  transition: all 0.3s ease-in-out;
+}
+
+.normal-input-box {
+  width: 100%;
+  outline: none;
+  box-sizing: border-box;
+  border: none;
+  padding: 0;
+
+  /* 변동 */
+  height: 0;
+  transition: all 0.3s ease-in-out;
+}
+
+.normal-input-box.focused {
+  font-size: 18px;
+  height: 18px;
+  transition: all 0.3s ease-in-out;
+}

@@ -17,5 +17,20 @@
   flex: 1;
   border: 1px solid #ccc;
 }
+.email-signup-modal-item {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+.email-signup-modal-item-title {
+  font-weight: bold;
+}
+.email-signup-modal-item-detail {
+  font-size: 14px;
+}
+.email-signup-modal-item-container {
+  display: flex;
+  gap: 10px;
+}
 .email-signup-modal-footer {
 }
