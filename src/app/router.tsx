@@ -5,9 +5,13 @@ import { Auth } from "@/pages/Auth";
 
 export const router = createBrowserRouter([
   {
+    path: "*",
+    element: <NotFound />,
+  },
+  {
     path: "/",
     element: <PlayGround />,
-    errorElement: <NotFound />,
+
     children: [
       {
         path: "/auth",
