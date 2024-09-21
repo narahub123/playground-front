@@ -1,0 +1,76 @@
+.list-input {
+  position: relative;
+  width: 100%;
+  box-sizing: border-box;
+  border-radius: 5px;
+  padding: 7px;
+
+  /* 변동 */
+  border: 1px solid #ccc;
+  transition: all 0.1s ease-in-out;
+}
+
+.list-input.focused {
+  border: 2px solid var(--key-color);
+  transition: all 0.1s ease-in-out;
+}
+
+.list-input-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.list-input-info {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+.list-input-info-title {
+  font-size: 14px;
+}
+.list-input-info-value {
+  font-size: 18px;
+  height: 18px;
+}
+
+.list-input-list {
+  position: absolute;
+  width: 100%;
+  bottom: 25px;
+  left: 0;
+  background-color: #fff;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  overflow: auto;
+
+  /* 변동 */
+  max-height: 0;
+  visibility: hidden;
+  opacity: 0;
+
+  transition: all 0.3s ease-in-out;
+}
+
+.list-input-list.open {
+  max-height: 290px;
+  visibility: visible;
+  opacity: 1;
+  transition: all 0.3s ease-in-out;
+}
+
+.list-input-item {
+  width: 100%;
+  padding: 10px;
+}
+
+.list-input-item.selected {
+  background-color: var(--key-color);
+  color: white;
+}
+
+.list-input-item:hover {
+  background-color: var(--key-color);
+  color: white;
+}
