@@ -1,7 +1,7 @@
 const startYear = 1900;
 const currentYear = new Date().getFullYear();
-export const yearList: number[] = [];
 
+export const yearList: number[] = [];
 for (let year = startYear; year <= currentYear; year++) {
   yearList.unshift(year);
 }

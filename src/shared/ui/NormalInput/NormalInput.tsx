@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import "./NormalInput.css";
 import { debounce } from "@/shared/utils";
 import useClickOutside from "@/shared/hooks/useClickOutside";
+import { useScrollToCenter } from "@/shared/hooks";
 
 interface NormalInputProps {
   title: string;
@@ -24,11 +25,13 @@ const NormalInput = ({
 }: NormalInputProps) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
+  const listRef = useRef<HTMLUListElement>(null);
   const [focused, setFocused] = useState(false);
   const [openDropdown, setOpenDropdown] = useState(false);
   const [text, setText] = useState("");
   const [message, setMessage] = useState("");
   const [valid, setValid] = useState(false);
+  const [index, setIndex] = useState(0);
 
   // input 박스에 focused 주기
   useEffect(() => {
@@ -42,6 +45,9 @@ const NormalInput = ({
 
   // 드롭박스 외부 클릭시 닫힘
   useClickOutside(containerRef, setOpenDropdown);
+
+  // 스크롤 위치 조정
+  useScrollToCenter(index, listRef, 4);
 
   const condition = focused || text !== "" || value ? " focused" : "";
   const openCond = openDropdown ? " open" : "";
@@ -75,6 +81,36 @@ const NormalInput = ({
     return list.find((item) => item.value === value)?.name;
   };
 
+  // 방향키로 값 선택하기
+  const handleSelectByKeydown = (e: React.KeyboardEvent<HTMLDivElement>) => {
+    if (!list) return;
+
+    let curIdx = index;
+
+    if (e.key === "ArrowDown") {
+      if (curIdx === list.length - 1) return;
+      curIdx += 1;
+    }
+    if (e.key === "ArrowUp") {
+      if (curIdx === 0) return;
+      curIdx -= 1;
+    }
+    if (e.key === "Enter") {
+      setOpenDropdown(!openDropdown);
+    }
+    if (e.key === "Escape") {
+      setOpenDropdown(false);
+    }
+
+    const value = list[curIdx].value;
+
+    setValue((prev: any) => ({
+      ...prev,
+      [id]: value,
+    }));
+    setIndex(curIdx);
+  };
+
   return (
     <div className="normal-input-wrapper">
       <div
@@ -84,11 +120,20 @@ const NormalInput = ({
         onFocus={() => {
           setFocused(true);
           setOpenDropdown(true);
+          // 처음 dropdown을 열 때 선택된 값이 없다면 첫번째 선택
+          if (!value && list && list.length > 0) {
+            setValue((prev: any) => ({
+              ...prev,
+              [id]: list[0].value, // 첫 번째 항목 선택
+            }));
+            setIndex(0); // 인덱스도 업데이트
+          }
         }}
         onBlur={() => {
           setFocused(false);
           setOpenDropdown(false);
         }}
+        onKeyDown={(e) => handleSelectByKeydown(e)}
       >
         <div className={`normal-input-info${condition}`}>
           <p className={`normal-input-info-title${condition}`}>{title}</p>
@@ -107,7 +152,7 @@ const NormalInput = ({
           ref={inputRef}
         />
         {list && (
-          <ul className={`normal-input-list${openCond}`}>
+          <ul className={`normal-input-list${openCond}`} ref={listRef}>
             {list.map((item) => (
               <li
                 key={item.value}
