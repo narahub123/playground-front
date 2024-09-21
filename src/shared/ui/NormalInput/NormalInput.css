@@ -1,3 +1,8 @@
+.normal-input-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
 .normal-input {
   position: relative;
   box-sizing: border-box;
