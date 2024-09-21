@@ -1,4 +1,5 @@
 .normal-input {
+  position: relative;
   box-sizing: border-box;
   border-radius: 10px;
   height: 60px;
@@ -61,4 +62,44 @@
   font-size: 18px;
   height: 18px;
   transition: all 0.3s ease-in-out;
+}
+
+.normal-input-list {
+  position: absolute;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  width: 50%;
+  background-color: #fff;
+  z-index: 1;
+  bottom: 23px;
+  right: 0;
+  overflow: auto;
+
+  /* 변동 */
+  max-height: 0;
+  visibility: hidden;
+  opacity: 0;
+  transition: all 0.3s ease-in-out;
+}
+.normal-input-list.open {
+  max-height: 300px;
+  visibility: visible;
+  opacity: 1;
+  transition: all 0.3s ease-in-out;
+}
+
+.normal-input-list-item {
+  padding: 10px;
+  cursor: pointer;
+}
+
+.normal-input-list-item.selected {
+  background-color: var(--key-color);
+  color: #fff;
+}
+
+.normal-input-list-item:hover {
+  background-color: var(--key-color);
+  color: #fff;
 }

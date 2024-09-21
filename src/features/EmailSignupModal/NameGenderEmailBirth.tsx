@@ -3,6 +3,7 @@ import "./NameGenderEmailBirth.css";
 import { useState } from "react";
 
 import { dateList, monthList, yearList } from "@/shared/data";
+import { SigninType } from "@/shared/types";
 
 interface BirthType {
   year: number;
@@ -12,10 +13,19 @@ interface BirthType {
 
 const NameGenderEmailBirth = () => {
   const MAX_NAME = 50;
+  const [signinInfo, setSigninInfo] = useState<SigninType>();
   const [isValid, setIsValid] = useState(true);
   const [loading, setLoading] = useState(false);
 
   const [birth, setBirth] = useState<BirthType>();
+
+  const genderList = [
+    { name: "남성", value: "m" },
+    { name: "여성", value: "f" },
+    { name: "양성", value: "b" },
+    { name: "중성", value: "n" },
+    { name: "숨김", value: "h" },
+  ];
 
   return (
     <div className="email-signup-modal-main">
@@ -23,8 +33,26 @@ const NameGenderEmailBirth = () => {
         <p className="email-signup-modal-header-title">계정을 생성해주세요.</p>
       </section>
       <section className="email-signup-modal-content">
-        <NormalInput title="이름" id="username" limit={MAX_NAME} />
-        <NormalInput title="이메일" id="email" />
+        <NormalInput
+          title="이름"
+          id="username"
+          limit={MAX_NAME}
+          value={signinInfo?.username}
+          setValue={setSigninInfo}
+        />
+        <NormalInput
+          title="성별"
+          id="gender"
+          list={genderList}
+          value={signinInfo?.gender}
+          setValue={setSigninInfo}
+        />
+        <NormalInput
+          title="이메일"
+          id="email"
+          value={signinInfo?.email}
+          setValue={setSigninInfo}
+        />
         <div className="email-signup-modal-item">
           <p className="email-signup-modal-item-title">생년월일</p>
           <p className="email-signup-modal-item-detail">
