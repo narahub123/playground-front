@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import "./NormalInput.css";
 import { debounce } from "@/shared/utils";
 import useClickOutside from "@/shared/hooks/useClickOutside";
@@ -10,6 +10,7 @@ interface NormalInputProps {
   list?: any[];
   value: string | number | undefined;
   setValue: React.Dispatch<React.SetStateAction<any | undefined>>;
+  tabIndex: number;
 }
 
 const NormalInput = ({
@@ -19,23 +20,32 @@ const NormalInput = ({
   list,
   value,
   setValue,
+  tabIndex,
 }: NormalInputProps) => {
   const containerRef = useRef<HTMLDivElement>(null);
+  const inputRef = useRef<HTMLInputElement>(null);
   const [focused, setFocused] = useState(false);
   const [openDropdown, setOpenDropdown] = useState(false);
   const [text, setText] = useState("");
   const [message, setMessage] = useState("");
   const [valid, setValid] = useState(false);
 
-  const condition = focused || text !== "" || value ? " focused" : "";
-  const openCond = openDropdown ? " open" : "";
-  const validCond = valid ? " valid" : " invalid";
+  // input 박스에 focused 주기
+  useEffect(() => {
+    if (!focused || !inputRef.current) return;
+
+    inputRef.current.focus();
+  }, [focused]);
 
   // 텍스트 박스 이외 클릭시 focused 풀기
   useClickOutside(containerRef, setFocused);
 
   // 드롭박스 외부 클릭시 닫힘
   useClickOutside(containerRef, setOpenDropdown);
+
+  const condition = focused || text !== "" || value ? " focused" : "";
+  const openCond = openDropdown ? " open" : "";
+  const validCond = valid ? " valid" : " invalid";
 
   // 글자 입력
   const handleTextChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -50,7 +60,7 @@ const NormalInput = ({
     300
   );
 
-  // 선택
+  // 선택 핸들러
   const handleSelect = (value: any) => {
     setValue((prev: any) => ({
       ...prev,
@@ -58,6 +68,7 @@ const NormalInput = ({
     }));
   };
 
+  // value에 따른 표기
   const getName = (value: any) => {
     if (!list) return;
 
@@ -68,11 +79,16 @@ const NormalInput = ({
     <div className="normal-input-wrapper">
       <div
         className={`normal-input${condition}`}
-        onClick={() => {
-          setFocused(true);
-          setOpenDropdown(!openDropdown);
-        }}
         ref={containerRef}
+        tabIndex={tabIndex} // tab 이동을 위해서 번호 주기
+        onFocus={() => {
+          setFocused(true);
+          setOpenDropdown(true);
+        }}
+        onBlur={() => {
+          setFocused(false);
+          setOpenDropdown(false);
+        }}
       >
         <div className={`normal-input-info${condition}`}>
           <p className={`normal-input-info-title${condition}`}>{title}</p>
@@ -88,6 +104,7 @@ const NormalInput = ({
           onChange={!list ? debouncedTextChange : undefined}
           readOnly={!!list}
           value={list ? getName(value) : undefined}
+          ref={inputRef}
         />
         {list && (
           <ul className={`normal-input-list${openCond}`}>

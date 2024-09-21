@@ -39,10 +39,15 @@ const ListInput = ({
     <div
       className={`list-input${condition}`}
       ref={containerRef}
-      onClick={() => {
+      onFocus={() => {
         setFocused(true);
-        setOpenDropdown(!openDropdown);
+        setOpenDropdown(true);
       }}
+      onBlur={() => {
+        setFocused(false);
+        setOpenDropdown(false);
+      }}
+      tabIndex={0}
     >
       <div className="list-input-wrapper">
         <div className="list-input-info">
@@ -56,6 +61,7 @@ const ListInput = ({
       <ul className={`list-input-list${openCond}`}>
         {list.map((item) => (
           <li
+            key={item}
             className={`list-input-item${item === value ? " selected" : ""}`}
             onClick={() => handleSelect(item)}
           >

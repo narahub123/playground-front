@@ -40,6 +40,7 @@ const NameGenderEmailBirth = () => {
           limit={MAX_NAME}
           value={signinInfo?.username}
           setValue={setSigninInfo}
+          tabIndex={1}
         />
         <NormalInput
           title="성별"
@@ -47,12 +48,14 @@ const NameGenderEmailBirth = () => {
           list={genderList}
           value={signinInfo?.gender}
           setValue={setSigninInfo}
+          tabIndex={2}
         />
         <NormalInput
           title="이메일"
           id="email"
           value={signinInfo?.email}
           setValue={setSigninInfo}
+          tabIndex={3}
         />
         <div className="email-signup-modal-item">
           <p className="email-signup-modal-item-title">생년월일</p>

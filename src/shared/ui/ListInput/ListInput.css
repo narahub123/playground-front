@@ -4,15 +4,16 @@
   box-sizing: border-box;
   border-radius: 5px;
   padding: 7px;
+  outline: 0;
 
   /* 변동 */
   border: 1px solid #ccc;
-  transition: all 0.1s ease-in-out;
+  transition: all 0.3s ease-in-out;
 }
 
 .list-input.focused {
   border: 2px solid var(--key-color);
-  transition: all 0.1s ease-in-out;
+  transition: all 0.3s ease-in-out;
 }
 
 .list-input-wrapper {
