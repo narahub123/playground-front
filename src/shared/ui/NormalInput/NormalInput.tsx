@@ -24,9 +24,12 @@ const NormalInput = ({
   const [focused, setFocused] = useState(false);
   const [openDropdown, setOpenDropdown] = useState(false);
   const [text, setText] = useState("");
+  const [message, setMessage] = useState("");
+  const [valid, setValid] = useState(false);
 
   const condition = focused || text !== "" || value ? " focused" : "";
   const openCond = openDropdown ? " open" : "";
+  const validCond = valid ? " valid" : " invalid";
 
   // 텍스트 박스 이외 클릭시 focused 풀기
   useClickOutside(containerRef, setFocused);
@@ -62,44 +65,47 @@ const NormalInput = ({
   };
 
   return (
-    <div
-      className={`normal-input${condition}`}
-      onClick={() => {
-        setFocused(true);
-        setOpenDropdown(!openDropdown);
-      }}
-      ref={containerRef}
-    >
-      <div className={`normal-input-info${condition}`}>
-        <p className={`normal-input-info-title${condition}`}>{title}</p>
-        {focused && limit !== 0 && (
-          <p
-            className={`normal-input-info-count`}
-          >{`${text.length}/${limit}`}</p>
+    <div className="normal-input-wrapper">
+      <div
+        className={`normal-input${condition}`}
+        onClick={() => {
+          setFocused(true);
+          setOpenDropdown(!openDropdown);
+        }}
+        ref={containerRef}
+      >
+        <div className={`normal-input-info${condition}`}>
+          <p className={`normal-input-info-title${condition}`}>{title}</p>
+          {focused && limit !== 0 && (
+            <p
+              className={`normal-input-info-count`}
+            >{`${text.length}/${limit}`}</p>
+          )}
+        </div>
+        <input
+          type="text"
+          className={`normal-input-box${condition}`}
+          onChange={!list ? debouncedTextChange : undefined}
+          readOnly={!!list}
+          value={list ? getName(value) : undefined}
+        />
+        {list && (
+          <ul className={`normal-input-list${openCond}`}>
+            {list.map((item) => (
+              <li
+                key={item.value}
+                className={`normal-input-list-item${
+                  item.value === value ? " selected" : ""
+                }`}
+                onClick={() => handleSelect(item.value)}
+              >
+                {item.name}
+              </li>
+            ))}
+          </ul>
         )}
       </div>
-      <input
-        type="text"
-        className={`normal-input-box${condition}`}
-        onChange={!list ? debouncedTextChange : undefined}
-        readOnly={!!list}
-        value={list ? getName(value) : undefined}
-      />
-      {list && (
-        <ul className={`normal-input-list${openCond}`}>
-          {list.map((item) => (
-            <li
-              key={item.value}
-              className={`normal-input-list-item${
-                item.value === value ? " selected" : ""
-              }`}
-              onClick={() => handleSelect(item.value)}
-            >
-              {item.name}
-            </li>
-          ))}
-        </ul>
-      )}
+      <p className={`normal-input-message ${validCond}`}>{message}</p>
     </div>
   );
 };

@@ -16,6 +16,7 @@ const NameGenderEmailBirth = () => {
   const [signinInfo, setSigninInfo] = useState<SigninType>();
   const [isValid, setIsValid] = useState(true);
   const [loading, setLoading] = useState(false);
+  const [message, setMessage] = useState("");
 
   const [birth, setBirth] = useState<BirthType>();
 
@@ -85,6 +86,7 @@ const NameGenderEmailBirth = () => {
               list={dateList(birth?.year, birth?.month)}
             />
           </div>
+          <p className="email-signup-modal-item-message">{message}</p>
         </div>
       </section>
       <section className="email-signup-modal-footer">

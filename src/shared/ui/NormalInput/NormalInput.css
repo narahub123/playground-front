@@ -1,7 +1,7 @@
 .normal-input-wrapper {
   display: flex;
   flex-direction: column;
-  gap: 5px;
+  gap: 2px;
 }
 .normal-input {
   position: relative;
@@ -107,4 +107,17 @@
 .normal-input-list-item:hover {
   background-color: var(--key-color);
   color: #fff;
+}
+
+.normal-input-message {
+  margin-left: 10px;
+  font-size: 14px;
+  height: 14px;
+}
+
+.normal-input-message.valid {
+  color: blue;
+}
+.normal-input-message.invalid {
+  color: red;
 }
