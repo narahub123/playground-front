@@ -95,12 +95,13 @@ const ListInput = ({
     >
       <div className="list-input-wrapper">
         <div className="list-input-info">
-          <p className="list-input-info-title">{title}</p>
+          <p className={`list-input-info-title${condition}`}>{title}</p>
           <p className="list-input-info-value">{value}</p>
         </div>
-        <div className="list-input-icon">
-          <LuChevronDown className="icon" />
-        </div>
+
+        <LuChevronDown
+          className={`list-input-icon icon ${condition} ${openCond}`}
+        />
       </div>
       <ul className={`list-input-list${openCond}`} ref={listRef}>
         {list.map((item) => (
