@@ -75,9 +75,9 @@
   border: 1px solid #ccc;
   border-radius: 10px;
   width: 50%;
-  background-color: #fff;
+  background-color: var(--background);
   z-index: 1;
-  bottom: 23px;
+  bottom: 40px;
   right: 0;
   overflow: auto;
 

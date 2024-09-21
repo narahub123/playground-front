@@ -6,6 +6,11 @@
   box-sizing: border-box;
 }
 
+input {
+  background-color: var(--background);
+  color: var(--text);
+}
+
 :root {
   --key-color: #6495ed;
 }

@@ -39,7 +39,7 @@
   width: 100%;
   bottom: 25px;
   left: 0;
-  background-color: #fff;
+  background-color: var(--background);
   box-sizing: border-box;
   border: 1px solid #ccc;
   border-radius: 10px;
